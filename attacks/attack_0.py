@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 25 10:51:25 2020
-This code is for creat a sub-graph
-@author: Bang
-"""
-
 
 
 from dgl.data import citation_graph as citegrh
@@ -67,16 +61,19 @@ def attack0(dataset_name, attack_node_arg, cuda):
         feature_number = 1433
         label_number = 7
         data = citegrh.load_cora()
+        data1 = citegrh.load_cora()
     if dataset_name == 'citeseer':
         node_number=3327
         feature_number =3703
         label_number =6
         data = citegrh.load_citeseer()
+        data1 = citegrh.load_citeseer()
     if dataset_name == 'pubmed':
         node_number=19717
         feature_number = 500
         label_number = 3
         data = citegrh.load_pubmed()
+        data1 = citegrh.load_pubmed()
     
     attack_node_number = int(node_number * attack_node_arg)
     print("============================================================")
@@ -149,7 +146,6 @@ def attack0(dataset_name, attack_node_arg, cuda):
         sub_graph_node_index.append(random.randint(0,node_number-1))
     
     
-    data1 = citegrh.load_cora()
     labels1 = th.LongTensor(data1.labels)
     test_mask1 = th.ByteTensor(data1.test_mask)
     
@@ -251,7 +247,6 @@ def attack0(dataset_name, attack_node_arg, cuda):
     sub_test_mask = th.ByteTensor(test_mask)
     #sub_g = DGLGraph(nx.from_numpy_matrix(sub_g))
     
-    data = citegrh.load_cora()
     features = th.FloatTensor(data.features)
     labels = th.LongTensor(data.labels)
     train_mask = th.ByteTensor(data.train_mask)
