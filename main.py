@@ -10,10 +10,10 @@ parser.add_argument('--gpu', default=None, help="To use cuda, set \
 parser.add_argument('--attack_type', type=int, default=0,
                     help="int id of attack type")
 
-parser.add_argument('--dataset', type=str, default='pubmed',
+parser.add_argument('--dataset', type=str, default='cora',
                     help="Dataset for the target model: (cora, citeseer, pubmed)")
 
-parser.add_argument('--attack_node', type=float, default=0.05,
+parser.add_argument('--attack_node', type=float, default=0.25,
                     help='proportion of the attack nodes')
 
 parser.add_argument('--shadow_dataset_size', type=float, default=1,
