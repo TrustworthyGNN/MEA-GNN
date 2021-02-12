@@ -37,7 +37,7 @@ For example, for shadow dataset with half size as the target dataset, please use
 
 ### Example
 
-For runing the attack-0 in Cora with 5% attack nodes obtained by the adversary, you can run the comment as:
+For runing the attack-0 in Cora with 25% attack nodes obtained by the adversary, you can run the comment as:
 
 `` python main.py --attack_tyoe 0 --dataset cora --attack_node 0.25``
 
