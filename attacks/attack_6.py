@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 12 00:28:50 2020
-This code is for combining the attack-2 and attack-3
-@author: Bang
-"""
 
 #import library
 import torch.nn as nn
