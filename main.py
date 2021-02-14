@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import argparse
 from attacks.attack_0 import attack0
+from attacks.attack_1 import attack1
 
 parser = argparse.ArgumentParser()
 
@@ -25,3 +26,5 @@ print(args.attack_node)
 
 if args.attack_type == 0:
     attack0(args.dataset, args.attack_node,args.gpu)
+if args.attack_type == 1:
+    attack1(args.dataset, args.attack_node,args.gpu)
