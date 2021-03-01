@@ -85,7 +85,28 @@ def evaluate(model, g, features, labels, mask):
 def attack3(dataset_name, attack_node_arg, cuda):
     #devide into two graph
     # Create a graph given in the above diagram
-    data = citegrh.load_cora()
+    if dataset_name == 'cora':
+        node_number=2708
+        feature_number = 1433
+        label_number = 7
+        data = citegrh.load_cora()
+        data1 = citegrh.load_cora()
+        model_path = './models/attack_3_subgraph_shadow_model_cora_8159.pkl'
+    if dataset_name == 'citeseer':
+        node_number=3327
+        feature_number =3703
+        label_number =6
+        data = citegrh.load_citeseer()
+        data1 = citegrh.load_citeseer()
+        model_path = './models/attack_3_subgraph_shadow_model_citeseer_6966.pkl'
+    if dataset_name == 'pubmed':
+        node_number=19717
+        feature_number = 500
+        label_number = 3
+        data = citegrh.load_pubmed()
+        data1 = citegrh.load_pubmed()
+        model_path = './models/attack_3_subgraph_shadow_model_pubmed_8044.pkl'
+    
     features = data.features
     labels = data.labels
     train_mask = data.train_mask
@@ -95,15 +116,17 @@ def attack3(dataset_name, attack_node_arg, cuda):
     g_numpy = nx.to_numpy_array(data.graph)
     g_matrix = np.asmatrix(g_numpy.copy())
     
+    #Here we use a pre-devided graph with their index
+    
     sub_graph_index_b = []
-    fileObject = open('./data/attack3_shadow_graph/cora/target_graph_index.txt', 'r')
+    fileObject = open('./data/attack3_shadow_graph/' + dataset_name + '/target_graph_index.txt', 'r')
     contents = fileObject.readlines()
     for ip in contents:
         sub_graph_index_b.append(int(ip))
     fileObject.close()
     
     sub_graph_index_a = []
-    fileObject = open('./data/attack3_shadow_graph/cora/protential_1300_shadow_graph_index.txt', 'r')
+    fileObject = open('./data/attack3_shadow_graph/' + dataset_name + '/protential_1300_shadow_graph_index.txt', 'r')
     contents = fileObject.readlines()
     for ip in contents:
         sub_graph_index_a.append(int(ip))
@@ -111,7 +134,7 @@ def attack3(dataset_name, attack_node_arg, cuda):
     
     #choose attack features in graphA
     attack_node = []
-    while len(attack_node) < 70:
+    while len(attack_node) < attack_node_arg:
         protential_node_index = random.randint(0,len(sub_graph_index_b) - 1)
         protential_node = sub_graph_index_b[protential_node_index]
         if protential_node not in attack_node:
@@ -179,7 +202,9 @@ def attack3(dataset_name, attack_node_arg, cuda):
     max_acc2 = 0
     max_acc3 = 0
     
-    net1.load_state_dict(th.load("./models/shadow_model_cora_8159.pkl"))
+    #Here we use a pre-trained model, you may replace the model with yours.
+    
+    net1.load_state_dict(th.load(model_path))
     #th.save(net.state_dict(), "./models/attack_3_subgraph_shadow_model_pubmed.pkl")
     
     #for sub_graph_B

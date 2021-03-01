@@ -76,9 +76,6 @@ def attack0(dataset_name, attack_node_arg, cuda):
         data1 = citegrh.load_pubmed()
     
     attack_node_number = int(node_number * attack_node_arg)
-    print("============================================================")
-    print(attack_node_number)
-    print(type(attack_node_number))
     
     #train target model:
     
