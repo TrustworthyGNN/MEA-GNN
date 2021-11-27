@@ -1,9 +1,24 @@
-# MEA-GNN
+# Model Extraction Attacks against Graph Neural Network
+
+The source code for AsiaCCS2022 paper: "Model Extraction Attacks on Graph Neural Networks: Taxonomy and Realization ".
+The paper can be found in [https://arxiv.org/abs/2010.12751](https://arxiv.org/abs/2010.12751)
+
+If you make use of this code in your work, please cite the following paper:
+<pre>
+@inproceedings{wypy2022meagnn,
+  title={Adapting Membership Inference Attacks to GNN for Graph Classification: Approaches and Implications},
+  author={Bang, Wu and Xiangwen, Yang and Shirui, Pan and Xingliang, Yuan},
+  booktitle = {{ASIA} {CCS} '22: {ACM} Asia Conference on Computer and Communications
+               Security, Nagasaki, May 30 - June 3, 2022},
+  year={2022},
+  publisher = {{ACM}}
+}
+</pre>
 
 ## Enviroments Requires
 
-* Pytorch
-* Dgl
+* Pytorch 
+* Dgl 
 
 ## Usage
 
@@ -41,3 +56,5 @@ For runing the attack-0 in Cora with 25% attack nodes obtained by the adversary,
 
 `` python main.py --attack_type 0 --dataset cora --attack_node 0.25``
 
+
+If you have any questions, please send an email to us.
