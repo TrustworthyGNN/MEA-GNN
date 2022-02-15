@@ -6,7 +6,7 @@ The paper can be found in [https://arxiv.org/abs/2010.12751](https://arxiv.org/a
 If you make use of this code in your work, please cite the following paper:
 <pre>
 @inproceedings{wypy2022meagnn,
-  title={Adapting Membership Inference Attacks to GNN for Graph Classification: Approaches and Implications},
+  title={Model Extraction Attacks on Graph Neural Networks: Taxonomy and Realization},
   author={Bang, Wu and Xiangwen, Yang and Shirui, Pan and Xingliang, Yuan},
   booktitle = {{ASIA} {CCS} '22: {ACM} Asia Conference on Computer and Communications
                Security, Nagasaki, May 30 - June 3, 2022},
